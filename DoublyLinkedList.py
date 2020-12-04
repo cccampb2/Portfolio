@@ -1,6 +1,6 @@
 from random import randint as mr
 
-
+#Node Class with head and tail pointers
 class Node:
     def __init__(self,data):
         self.data = data
@@ -8,24 +8,14 @@ class Node:
         self.prev = None
 
 
-
+#Linked List Class
 class DoublyLinkedList:
-
+    #Initialize Linked List
     def __init__(self):
         self.head = self.tail = None
         self.__length = 0
 
-    def reverseLinkedList(self):
-        prev = None
-        curr = self.head
-
-        while(curr is not None):
-            next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next
-        self.head = prev
-
+    #Print Linked List from the head node
     def displayFromHead(self):
         current = self.head
         while current:
@@ -33,6 +23,8 @@ class DoublyLinkedList:
             current = current.next
         print()
 
+
+    #Print Linked List from the tail node
     def displayFromTail(self):
         current = self.tail
         while current:
@@ -41,6 +33,7 @@ class DoublyLinkedList:
 
         print()
 
+    #Insert a node at the End of the Linked List
     def insertDataAtEnd(self,data):
         newNode = Node(data)
         if self.head == None:
@@ -52,11 +45,13 @@ class DoublyLinkedList:
             newNode.prev = self.tail
             self.tail = newNode
         self.__length += 1
-    
+    #Returns length of Linked List
     def getLength(self):
-        return self.__length     
+        return self.__length  
 
-    def inserionSort(self):
+       
+    #Sorts Linked List in ascending order
+    def insertionSort(self):
         for i in range(1,self.__length):
             
             key = self.getNodeAtPos(i)
@@ -110,7 +105,7 @@ class DoublyLinkedList:
 
                     placeToBeInserted.prev = key
                     key.next = placeToBeInserted
-
+    #Return Node at a certain position
     def getNodeAtPos(self,pos):
         current = self.head
         track = 0
@@ -128,18 +123,10 @@ myDoublyLinkedList = DoublyLinkedList()
 
 for i in range(10):
    
-    myDoublyLinkedList.insertDataAtEnd(i)
+    myDoublyLinkedList.insertDataAtEnd(10-i)
    
 
 
-
-
-
- 
-
 myDoublyLinkedList.displayFromHead()
-myDoublyLinkedList.reverseLinkedList()
+myDoublyLinkedList.insertionSort()
 myDoublyLinkedList.displayFromHead()
-
-
-#myDoublyLinkedList.displayFromTail()
