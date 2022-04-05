@@ -51,7 +51,7 @@ void setup() {
   for (int i = 0; i < sudokuBoard.length; i++) {
     for (int j = 0; j < sudokuBoard.length; j++) {
       sudokuBoard[j][i] = new Cell(i*boxSize, j*boxSize, sBoard[j][i], boxSize);
-      if (sudokuBoard[j][i].get_num() != 0) {
+      if (sudokuBoard[j][i].getNum() != 0) {
         sudokuBoard[j][i].setOriginal(true);
       }
     }
@@ -73,7 +73,7 @@ void keyPressed() {
     for (int i = 0; i < sudokuBoard.length; i++) {
       for (int j = 0; j < sudokuBoard.length; j++) {
         if (!sudokuBoard[j][i].getOriginal()) {
-          sudokuBoard[j][i].set_num(0);
+          sudokuBoard[j][i].setNum(0);
           sudokuBoard[j][i].setColor(color(0));
           sBoard[j][i] = 0;
         }
@@ -136,14 +136,14 @@ void draw() {
 
           found = true;
           sBoard[find[0]][find[1]] = i;
-          sudokuBoard[find[0]][find[1]].set_num(i);
+          sudokuBoard[find[0]][find[1]].setNum(i);
           sudokuBoard[find[0]][find[1]].setColor(color(0, 0, 255));
           prev.add(new PVector(find[0], find[1]));
           break;
         } else if (isValid(sBoard, i, find) && start > 1 && prevCoorX != -1) {
           found = true;
           sBoard[find[0]][find[1]] = i;
-          sudokuBoard[find[0]][find[1]].set_num(i);
+          sudokuBoard[find[0]][find[1]].setNum(i);
           sudokuBoard[find[0]][find[1]].setColor(color(0, 0, 255));
 
           prevCoorX = -1;
@@ -158,7 +158,7 @@ void draw() {
         prevCoorX = int(prev.get(prev.size()-1).x);
         prevCoorY= int(prev.get(prev.size()-1).y);
         sBoard[find[0]][find[1]] = 0;
-        sudokuBoard[find[0]][find[1]].set_num(0);
+        sudokuBoard[find[0]][find[1]].setNum(0);
         prev.remove(prev.size()-1);
       }
     }
